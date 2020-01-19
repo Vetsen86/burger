@@ -1,28 +1,48 @@
-<h1>BURGERS!</h1>
+<h1 class="header text-center my-5">BURGERS!</h1>
+<div class="container img-container">
+  <img src="https://www.seriouseats.com/recipes/images/2015/07/20150702-sous-vide-hamburger-anova-primary-1500x1125.jpg"
+    class="mx-auto img-fluid" />
+</div>
+<hr>
+</hr>
 
-<div class="row">
-  <div class="col" id="undevoured">
-    <h1>Burgers yet to be eaten:</h1>
-    {{#each burgers}}
+<div class="container my-5">
+  <div class="row justify-content-around">
+    <div class="col-5 text-center" id="undevoured">
+      <h1>Burgers yet to be eaten:</h1>
+      {{#each burgers}}
       {{#unless devoured}}
-        <h3>{{burger_name}}</h3>
-        <button class="btn btn-large btn-danger devour" data-burger-id={{id}}>Devour!</button>
+
+      <div class="card my-3 mx-auto">
+        <div class="card-body">
+          <h5 class="card-title">{{burger_name}}</h5>
+          <button class="btn btn-large btn-danger devour" data-burger-id={{id}}>Devour!</button>
+        </div>
+      </div>
+
       {{/unless}}
-    {{/each}}
-  </div>
-  <div class="col" id="devoured">
-    <h1>Burgers devoured:</h1>
-    {{#each burgers}}
+      {{/each}}
+    </div>
+    <div class="col-5 text-center" id="devoured">
+      <h1>Burgers devoured:</h1>
+      {{#each burgers}}
       {{#if devoured}}
-        <h3>{{burger_name}}</h3>  
+      <div class="card my-3 mx-auto">
+        <div class="card-body">
+          <h5 class="card-title">{{burger_name}}</h5>
+        </div>
+      </div>
       {{/if}}
-    {{/each}}
+      {{/each}}
+    </div>
   </div>
 </div>
 
-<form>
-  <div class="form-group">
-    <label for="add-burger">Burger Name</label>
-    <input type="text" class="form-control" id="add-burger" aria-describedby="emailHelp">
-    <button type="submit" id="burger-submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="container form-container">
+  <form>
+    <div class="form-group">
+      <label class="bigger" for="add-burger">Add a Burger!</label>
+      <input type="text" class="form-control" id="add-burger" aria-describedby="emailHelp" placeholder="Burger Name Here">
+      <button type="submit" id="burger-submit" class="btn btn-primary my-2">Submit</button>
+  </form>
+</div>

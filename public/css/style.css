@@ -1,3 +1,29 @@
 body {
     background-color: blue;
 }
+
+img {
+    display: block;
+    width: 50%;
+}
+
+#undevoured, #devoured, .form-container {
+    background-color: grey;
+    border-radius: 5px;
+}
+
+.card {
+    width: 75%;
+}
+
+.bigger {
+    font-size: 2em;
+}
+
+.form-container {
+    width: max-content;
+}
+
+#add-burger {
+    width: 400px;
+}
