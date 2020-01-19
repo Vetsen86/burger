@@ -15,7 +15,13 @@ router.get("/", function(req, res) {
 
 router.post("/api/addburger", function(req, res) {
     burger.add(req.body.burger_name, function(result) {
-        console.log(result);
+        res.json(result);
+    });
+});
+
+router.put("/api/devour", function(req, res) {
+    burger.update(req.body.burgerId, function(result) {
+        res.json(result);
     });
 });
 

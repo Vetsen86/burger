@@ -12,20 +12,36 @@ var orm = {
     selectAll: function(cb) {
         connection.query("SELECT * FROM burgers", function(err, result) {
             if (err) throw err;
-            console.log(result);
+
+            for(i = 0; i < result.length; i++) {
+                result[i].burger_name = result[i].burger_name.replace(/`/g, "");
+            }
+
             cb(result);
         });
     },
 
     insertOne: function(burgerName, cb) {
 
-        connection.query("INSERT INTO burgers (burger_name, devoured) VALUES ('??', false)",
-            [burgerName],
+        connection.query("INSERT INTO burgers (burger_name, devoured) VALUES (\"??\", false)",
+            burgerName,
             function(err, result) {
                 if (err) throw err;
-                console.log(result);
                 cb(result);
             }
+        );
+    },
+
+    updateOne: function(burgerId, cb) {
+
+        var queryString = "UPDATE burgers SET devoured = true WHERE id = " + burgerId;
+
+        connection.query(queryString,
+            function(err, result) {
+                console.log(result);
+                if (err) throw err;
+                cb(result);
+            }    
         );
     }
 

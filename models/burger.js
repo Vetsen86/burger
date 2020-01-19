@@ -11,6 +11,12 @@ var burger = {
         orm.selectAll(function(res) {
             cb(res);
         });
+    },
+
+    update: function(burgerId, cb) {
+        orm.updateOne(burgerId, function(res) {
+            cb(res);
+        });
     }
 };
 
