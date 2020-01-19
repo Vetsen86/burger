@@ -5,7 +5,12 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 router.get("/", function(req, res) {
-    res.render("index");
+    burger.all(function(result) {
+        var burgers = {
+            burgers: result
+        };
+        res.render("index", burgers);
+    });    
 });
 
 router.post("/api/addburger", function(req, res) {
